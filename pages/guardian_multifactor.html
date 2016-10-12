@@ -1,0 +1,82 @@
+<!-- This page is coming from my repo! -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>2nd Factor Authentication</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style type="text/css">
+
+    html, body { padding: 0; margin: 0; }
+
+    .table {
+      display: table;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: #2b2b33;
+    }
+
+    .cell {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .content {
+      padding: 25px 0px 25px 0px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 280px; /* login widget width */
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="table">
+    <div class="cell">
+      <div class="content">
+        <!-- WIDGET -->
+        <div class="js-mfa-container mfa-container" id="container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//cdn.auth0.com/js/mfa-widget/mfa-widget-0.1.1.min.js"></script>
+
+  <script>
+    (function() {
+      return new Auth0MFAWidget({
+        container: "container",
+
+        theme: {
+          icon: '//cdn.auth0.com/blog/react-js/react.png',
+          primaryColor: "#ea5323"
+        },
+
+        requesterErrors: [
+          {% for error in errors %}
+            { message: "{{ error.message }}" }
+          {% endfor %}
+        ],
+
+        mfaServerUrl: "{{ mfaServerUrl }}",
+        requestToken: "{{ requestToken }}",
+        postActionURL: "{{ postActionURL }}",
+
+        userData: {
+          userId: "{{ userData.userId }}",
+          email: "{{ userData.email }}",
+          friendlyUserId: "{{ userData.friendlyUserId }}",
+          tenant: "{{ userData.tenant }}",
+          {% if userData.tenantFriendlyName %}
+          tenantFriendlyName: "{{ userData.tenantFriendlyName }}"
+          {% endif %}
+        },
+        globalTrackingId: "{{ globalTrackingId }}"
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- This page is coming from my repo! -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Sign In with Auth0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+  <!--[if IE 8]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+  <![endif]-->
+
+  <!--[if lte IE 9]>
+  <script src="https://cdn.auth0.com/js/base64.js"></script>
+  <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+  <![endif]-->
+
+  <script src="https://cdn.auth0.com/js/lock/10.2/lock.min.js"></script>
+  <script>
+    // Decode utf8 characters properly
+    var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
+
+    var connection = config.connection;
+    var prompt = config.prompt;
+    var languageDictionary;
+    var language;
+    if (config.dict && config.dict.signin && config.dict.signin.title) {
+      languageDictionary = { title: config.dict.signin.title };
+    } else if (typeof config.dict === 'string') {
+      language = config.dict;
+    }
+
+    var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+      auth: {
+        redirectUrl: config.callbackURL,
+        responseType: config.callbackOnLocationHash ? 'token' : 'code',
+        params: config.internalOptions
+      },
+      assetsUrl:  config.assetsUrl,
+      allowedConnections: connection ? [connection] : null,
+      rememberLastLogin: !prompt,
+      language: language,
+      languageDictionary: languageDictionary,
+      theme: {
+        //logo:            'YOUR LOGO HERE',
+        //primaryColor:    'green'
+      },
+      closable: false,
+      // uncomment if you want small buttons for social providers
+      // socialButtonStyle: 'small'
+    });
+
+    lock.show();
+  </script>
+</body>
+</html>
