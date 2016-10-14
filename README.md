@@ -2,6 +2,18 @@
 
 Under [Extensions](https://manage.auth0.com/#/extensions) you'll find the GitHub Deploy extension which allows you to manage your Datbase Connections and Rules in a GitHub repository.
 
+## Deploying Pages
+
+For Hosted Pages you'll created an html file and a json file (for enabled/disabled status) under `pages`. Supported hosted pages:
+
+
+```
+error_page
+guardian_multifactor
+login
+password_reset
+```
+
 ## Deploying Database Connection Scripts
 
 For Database Connections you create a directory under `database-connections` which contains the name of your Database Connection (in exactly the same way as you named it in Auth0). And under this directory you'll create 1 file for every script you want to use. Only the `login` script is required in a Custom Database connection. If you enabled the migration feature, you'll also need to provide the `get_user` script.
