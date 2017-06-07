@@ -65,6 +65,5 @@ function (user, context, callback) {
 
 > Note:
 >  - Having multiple rules with the same order is not allowed. Make sure you don't have any collisions.
->  - For the `user_registration` and `login_failure` stage only a single rule is allowed.
 
 A few examples can be found [here](rules).
