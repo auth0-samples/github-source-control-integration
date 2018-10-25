@@ -1,6 +1,6 @@
 # GitHub Source Control Integration
 
-Under [Extensions](https://manage.auth0.com/#/extensions) you'll find the GitHub Deploy extension which allows you to manage your Datbase Connections and Rules in a GitHub repository.
+Under [Extensions](https://manage.auth0.com/#/extensions) you'll find the GitHub Deploy extension which allows you to manage your Database Connections and Rules in a GitHub repository.
 
 ## Deploying Pages
 
