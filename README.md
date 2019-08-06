@@ -37,7 +37,7 @@ For rules you'll create 1 JavasSript file for every rule you want to deploy unde
 
 When creating the rule the name in Auth0 will be set to `set-country`. If you plan to use Source Control integration for an existing account, make sure you rename your rules in Auth0 first to the same name of the files you'll deploy to this directory.
 
-In addition to that you might want to control the rule **order**, **status** (enabled/disabled) and **stage** (`login_success`, `login_failure`, `user_registration`).
+In addition to that you might want to control the rule **order**, **status** (enabled/disabled) and **stage** (ENUM value: `login_success`, `login_failure`, `pre_authorize`).
 
 These can be controlled by creating a JSON file next to your Javascript file. Eg:
 
